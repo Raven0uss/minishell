@@ -6,7 +6,7 @@
 #    By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/07 18:53:41 by sbelazou          #+#    #+#              #
-#    Updated: 2017/03/02 20:13:17 by sbelazou         ###   ########.fr        #
+#    Updated: 2017/03/13 21:04:36 by sbelazou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,7 +23,7 @@ SRC			=	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c
 				ft_strtrim.c ft_tolower.c ft_toupper.c ft_lstiter.c	ft_lstmap.c ft_lstadd.c\
 				ft_lstnew.c	ft_lstdel.c	ft_lstdelone.c ft_swap.c ft_sqrt.c ft_pow.c\
 				ft_fact.c ft_isblank.c ft_sort_tab.c ft_aff_tab.c ft_strcmp_case.c ft_onlyone.c\
-				ft_sizetab.c ft_rev_tab.c ft_tabfree.c ft_intlen.c
+				get_next_line.c ft_sizetab.c ft_rev_tab.c ft_tabfree.c ft_intlen.c
 
 OBJ			=	$(SRC:.c=.o)
 CFLAGS		=	-Wall -Wextra -Werror
