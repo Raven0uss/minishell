@@ -6,7 +6,7 @@
 #    By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 20:16:27 by sbelazou          #+#    #+#              #
-#    Updated: 2017/03/13 20:37:56 by sbelazou         ###   ########.fr        #
+#    Updated: 2017/03/14 19:12:38 by sbelazou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,7 +14,7 @@ NAME		=	minishell
 DIRSRC		=	./srcs/
 DIROBJ		=	./objs/
 INC_LIB		=	./includes/libft/libft.a
-SRC			=	main.c
+SRC			=	main.c exec.c ft_echo.c ft_cd.c
 
 OBJ			=	$(SRC:.c=.o)
 OBJS		=	$(OBJ:%=$(DIROBJ)%)
