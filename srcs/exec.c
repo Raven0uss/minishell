@@ -12,6 +12,8 @@
 
 #include "../includes/header.h"
 
+// CREATION CHEMIN ABSOLU AVEC RECHERCHE DU PATH POUR EXECVE
+
 int		exec_cmd(char **cmd, char **envp)
 {
 	if (access(cmd[0], X_OK | F_OK) == 0)
