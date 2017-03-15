@@ -12,18 +12,18 @@
 
 #include "../includes/header.h"
 
-static void			exec_builtin(char **cmd, int i)
+static void		  exec_builtin(char **cmd, unsigned int i, char **envp)
 {
 	if (i == 0)
 		ft_echo(ft_sizetab(cmd), cmd, 1);
 	else if (i == 1)
 		ft_cd(ft_sizetab(cmd), cmd);
 	else if (i == 2)
-		return ; //setenv
+		ft_setenv(ft_sizetab(cmd), cmd, envp);
 	else if (i == 3)
 		return ; //unsetenv
 	else if (i == 4)
-		return ; //env
+		ft_env(envp);
 }
 
 static char			**build_list(char **btl)
@@ -40,7 +40,7 @@ static char			**build_list(char **btl)
 	return (btl);
 }
 
-static int			check_builtins(char **cmd)
+static int			check_builtins(char **cmd, char **envp)
 {
 	unsigned int	i;
 	char			**builtin_list;
@@ -53,7 +53,7 @@ static int			check_builtins(char **cmd)
 	{
 		if (!strcmp(cmd[0], builtin_list[i]))
 		{
-			exec_builtin(cmd, i);
+		  exec_builtin(cmd, i, envp);
 			while (i)
 				free(builtin_list[i--]);
 			free(builtin_list[i]);
@@ -76,7 +76,7 @@ static void			minishell(char *buff, char **envp)
 	if (buff[0])
 	{
 		cmd = ft_strsplit(buff, ' ');
-		if (check_builtins(cmd) == 1)
+		if (check_builtins(cmd, envp) == 1)
 		{
 			free(cmd);
 			return ;

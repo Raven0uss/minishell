@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/02/07 20:16:53 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/14 19:11:29 by sbelazou         ###   ########.fr       */
+/*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
+/*   Updated: 2017/03/14 17:41:58 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HEADER_H
-# define HEADER_H
+#include "../includes/header.h"
 
-# include <sys/wait.h>
-# include "libft/libft.h"
-
-int			ft_echo(int ac, char **av, int fd);
-int			ft_cd(int ac, char **av);
-int			ft_env(char **envp);
-int			ft_setenv(int ac, char **av, char **envp);
-int			exec_cmd(char **cmd, char **envp);
-
-#endif
+int		ft_unsetenv(int ac, char **av, char **envp)
+{
+	return (0);
+}
