@@ -12,7 +12,8 @@
 
 #include "../includes/header.h"
 
-//Gestion des \ a gerer
+// Gestion des \ a gerer
+// Gestion espace debut avec -n
 
 static int			print_echo(char *str, int fd)
 {
