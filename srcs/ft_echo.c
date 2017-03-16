@@ -6,14 +6,13 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:33:50 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/14 18:30:35 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:10:03 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
 // Gestion des \ a gerer
-// Gestion espace debut avec -n
 // Doit afficher contenu de $VAR_ENV
 
 static int			print_echo(char *str, int fd)
@@ -34,7 +33,7 @@ static int			print_echo(char *str, int fd)
 
 int					ft_echo(int ac, char **av, int fd, char **envp)
 {
-	unsigned int	n;
+	unsigned char	n;
 	unsigned int	i;
 
 	i = 1;
@@ -46,8 +45,9 @@ int					ft_echo(int ac, char **av, int fd, char **envp)
 				n++;
 			else
 			{
-				if (i != 1)
-				  ft_putchar_fd(' ', fd);
+				if (i >= 2)
+					if (!(i == 2 && n))
+						ft_putchar_fd(' ', fd);
 				if (print_echo(av[i], fd))
 					return (0);
 			}

@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 20:36:30 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/14 19:12:13 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 19:19:38 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ static void			minishell(char *buff, char **envp)
 
 	if (buff[0])
 	{
-		cmd = ft_strsplit(buff, ' ');
+		if (!(cmd = ft_whitespaces(buff)))
+			return ;
 		if (check_builtins(cmd, envp) == 1)
 		{
 			free(cmd);

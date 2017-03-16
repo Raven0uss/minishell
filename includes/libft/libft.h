@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/05 14:29:38 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/13 21:03:18 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 19:04:24 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,6 @@ char					*ft_onlyone(char *str);
 int						ft_sizetab(char **tab);
 void					ft_tabfree(char ***tab);
 size_t					ft_intlen(int nb);
+char					**ft_whitespaces(char const *s);
 
 #endif
