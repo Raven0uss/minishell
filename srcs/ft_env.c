@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 20:36:09 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:43:18 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 // GESTION DE -i
 
-int		ft_env(char **envp)
+int					ft_env(char **envp)
 {
-  unsigned int	i;
+	unsigned int	i;
 
-  i = 0;
-  while (envp[i])
-    ft_putendl(envp[i++]);
-  return (0);
+	i = 0;
+	while (envp[i])
+		ft_putendl(envp[i++]);
+	return (0);
 }

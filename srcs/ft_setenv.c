@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 20:35:29 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:45:53 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ static int			usage(int m, char *str)
 		ft_putendl("usage: setenv name value [-o]");
 	else
 	{
-	    ft_putstr(str);
-	    ft_putendl(" already exist, use -o to overwrite value");
+		ft_putstr(str);
+		ft_putendl(" already exist, use -o to overwrite value");
 	}
 	return (-1);
 }
@@ -61,12 +61,12 @@ int					ft_setenv(int ac, char **av, char **envp)
 	if (ac < 2 || ac > 4)
 		return (usage(1, NULL));
 	if (ac == 4)
-	    if (++o && ft_strcmp(av[3], "-o"))
+		if (++o && ft_strcmp(av[3], "-o"))
 			return (usage(1, NULL));
 	size = ft_strlen(av[1]);
 	while (envp[i])
 	{
-	    if (!ft_strncmp(av[1], envp[i], size - 1) && envp[i][size] == '=')
+		if (!ft_strncmp(av[1], envp[i], size - 1) && envp[i][size] == '=')
 		{
 			if (!envp[i][size + 1] && ac != 2)
 			{
@@ -74,10 +74,10 @@ int					ft_setenv(int ac, char **av, char **envp)
 				return (0);
 			}
 			else if (o)
-					break ;
+				break ;
 			return (usage(0, av[1]));
 		}
-	    i++;
+		i++;
 	}
 	envp[i] = set_value(av[1], av[2]);
 	while (envp[i] && ft_whitespaces(envp[i]) != NULL)

@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 20:36:30 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 20:37:50 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:44:33 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Liberer la memoire proprement en toute circonstances
 
-static void		  exec_builtin(char **cmd, unsigned int i, char **envp)
+static void			exec_builtin(char **cmd, unsigned int i, char **envp)
 {
 	if (i == 0)
 		ft_echo(ft_sizetab(cmd), cmd, 1, envp);
@@ -55,7 +55,7 @@ static int			check_builtins(char **cmd, char **envp)
 	{
 		if (!ft_strcmp(cmd[0], builtin_list[i]))
 		{
-		  exec_builtin(cmd, i, envp);
+			exec_builtin(cmd, i, envp);
 			while (i)
 				free(builtin_list[i--]);
 			free(builtin_list[i]);
@@ -102,4 +102,3 @@ int					main(int ac, char **av, char **envp)
 	ft_putendl("Exiting minishell...");
 	return (0);
 }
-

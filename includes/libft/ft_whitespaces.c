@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/09 20:35:30 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 19:12:50 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:42:34 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,3 @@ char				**ft_whitespaces(char const *s)
 	new_str[i] = 0;
 	return (new_str);
 }
-
-
