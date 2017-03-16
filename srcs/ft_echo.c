@@ -6,13 +6,11 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:33:50 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 21:32:40 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 21:45:39 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
-
-// Gestion des \ a gerer
 
 static void			check_env(char *str, int fd, char **envp)
 {
@@ -52,9 +50,19 @@ static int			print_echo(char *str, int fd, char **envp)
 	while (str[i])
 	{
 		if (str[i] == '\\' && str[i + 1])
+		{
 			if (str[i + 1] == 'c')
 				return (1);
-		ft_putchar_fd(str[i], fd);
+			else if (str[i + 1] == 'n')
+			{
+				ft_putchar_fd('\n', fd);
+				i++;
+			}
+			else
+				ft_putchar_fd(str[i],fd);
+		}
+		else
+			ft_putchar_fd(str[i], fd);
 		i++;
 	}
 	return (0);

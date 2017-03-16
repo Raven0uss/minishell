@@ -6,13 +6,11 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 18:28:36 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 21:56:17 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
-
-// GERER LE ~ DANS UN NOM COMPLET
 
 static int			not_found(char *str)
 {
