@@ -12,22 +12,27 @@
 
 #include "../includes/header.h"
 
-int		ft_cd(int ac, char **av)
+// HOME A CHECK DANS L'ENV SI NOT FOUND ERROR
+
+static int	cd_home(char **envp)
+{
+  return (0);
+}
+
+int		ft_cd(int ac, char **av, char **envp)
 {
 	int	ret;
 
 	ret = 0;
 	if (ac > 2)
 		ft_putendl("cd: too many arguments");
-	else if (ac == 2)
-		return (1);
 	else if (ac == 1)
+	  return (cd_home(envp));
+	else if (ac == 2)
 	{
 		ft_putendl(av[1]);
 		ret = chdir(av[1]);
 		ft_putnbr(ret);
 	}
-	else
-		return (chdir("~"));
 	return (0);
 }

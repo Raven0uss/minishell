@@ -14,7 +14,8 @@ NAME		=	minishell
 DIRSRC		=	./srcs/
 DIROBJ		=	./objs/
 INC_LIB		=	./includes/libft/libft.a
-SRC			=	main.c exec.c ft_echo.c ft_cd.c
+SRC			=	main.c exec.c ft_echo.c ft_cd.c ft_env.c\
+				ft_setenv.c ft_unsetenv.c
 
 OBJ			=	$(SRC:.c=.o)
 OBJS		=	$(OBJ:%=$(DIROBJ)%)

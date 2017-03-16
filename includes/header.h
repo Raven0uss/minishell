@@ -16,10 +16,11 @@
 # include <sys/wait.h>
 # include "libft/libft.h"
 
-int			ft_echo(int ac, char **av, int fd);
-int			ft_cd(int ac, char **av);
+int			ft_echo(int ac, char **av, int fd, char **envp);
+int			ft_cd(int ac, char **av, char **envp);
 int			ft_env(char **envp);
 int			ft_setenv(int ac, char **av, char **envp);
+int			ft_unsetenv(int ac, char **av, char **envp);
 int			exec_cmd(char **cmd, char **envp);
 
 #endif

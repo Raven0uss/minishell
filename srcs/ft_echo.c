@@ -14,6 +14,7 @@
 
 // Gestion des \ a gerer
 // Gestion espace debut avec -n
+// Doit afficher contenu de $VAR_ENV
 
 static int			print_echo(char *str, int fd)
 {
@@ -31,7 +32,7 @@ static int			print_echo(char *str, int fd)
 	return (0);
 }
 
-int					ft_echo(int ac, char **av, int fd)
+int					ft_echo(int ac, char **av, int fd, char **envp)
 {
 	unsigned int	n;
 	unsigned int	i;
@@ -46,7 +47,7 @@ int					ft_echo(int ac, char **av, int fd)
 			else
 			{
 				if (i != 1)
-					ft_putchar(' ');
+				  ft_putchar_fd(' ', fd);
 				if (print_echo(av[i], fd))
 					return (0);
 			}

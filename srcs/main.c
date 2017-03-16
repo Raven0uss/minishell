@@ -15,13 +15,13 @@
 static void		  exec_builtin(char **cmd, unsigned int i, char **envp)
 {
 	if (i == 0)
-		ft_echo(ft_sizetab(cmd), cmd, 1);
+		ft_echo(ft_sizetab(cmd), cmd, 1, envp);
 	else if (i == 1)
-		ft_cd(ft_sizetab(cmd), cmd);
+		ft_cd(ft_sizetab(cmd), cmd, envp);
 	else if (i == 2)
 		ft_setenv(ft_sizetab(cmd), cmd, envp);
 	else if (i == 3)
-		return ; //unsetenv
+		ft_unsetenv(ft_sizetab(cmd), cmd, envp);
 	else if (i == 4)
 		ft_env(envp);
 }
@@ -51,7 +51,7 @@ static int			check_builtins(char **cmd, char **envp)
 	builtin_list = build_list(builtin_list);
 	while (builtin_list[i])
 	{
-		if (!strcmp(cmd[0], builtin_list[i]))
+		if (!ft_strcmp(cmd[0], builtin_list[i]))
 		{
 		  exec_builtin(cmd, i, envp);
 			while (i)
