@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 20:36:30 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 20:44:33 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 22:14:48 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void			exec_builtin(char **cmd, unsigned int i, char **envp)
 	else if (i == 3)
 		ft_unsetenv(ft_sizetab(cmd), cmd, envp);
 	else if (i == 4)
-		ft_env(envp);
+		ft_env(ft_sizetab(cmd), cmd, envp);
 }
 
 static char			**build_list(char **btl)

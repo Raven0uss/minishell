@@ -6,13 +6,11 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 18:58:04 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 20:49:06 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 22:17:35 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
-
-// Pourquoi $>./minishell ne relance pas le minishell ?
 
 static char			*find_path(char **envp)
 {
