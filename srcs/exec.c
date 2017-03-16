@@ -6,13 +6,13 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 18:58:04 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 17:50:25 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:37:29 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-// CREATION CHEMIN ABSOLU AVEC RECHERCHE DU PATH POUR EXECVE
+// Pourquoi $>./minishell ne relance pas le minishell ?
 
 static char			*find_path(char **envp)
 {

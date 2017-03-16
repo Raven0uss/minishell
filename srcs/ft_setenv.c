@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 20:33:08 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:35:29 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // NAME NE DOIT PAS CONTENIR =
 // AJOUT DE SI VIDE BAH TU METS
 // CAPITALIZE NAME
+// FT_SETENV 32 LIGNES
 
 static char			*set_value(char *name, char *value)
 {

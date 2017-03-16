@@ -6,11 +6,13 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 20:36:30 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 19:19:38 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:37:50 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
+
+// Liberer la memoire proprement en toute circonstances
 
 static void		  exec_builtin(char **cmd, unsigned int i, char **envp)
 {
