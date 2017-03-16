@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 18:58:04 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 20:37:29 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:49:06 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int			exec_wpath(char **cmd, char **envp)
 	i = 0;
 	if ((nc_path = find_path(envp)) == NULL)
 		return (0);
-	path = ft_strsplit(nc_path, ':'); // risque de segv
+	path = ft_strsplit(nc_path, ':');
 	while (path[i])
 		if (execat(path[i++], cmd, envp))
 		{
