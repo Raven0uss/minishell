@@ -6,16 +6,13 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 20:45:53 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 21:19:23 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-// NAME NE DOIT PAS CONTENIR =
-// AJOUT DE SI VIDE BAH TU METS
-// CAPITALIZE NAME
-// FT_SETENV 32 LIGNES
+// FT_SETENV TROP GRAND
 
 static char			*set_value(char *name, char *value)
 {
@@ -40,13 +37,15 @@ static char			*set_value(char *name, char *value)
 
 static int			usage(int m, char *str)
 {
-	if (m)
+	if (m == 1)
 		ft_putendl("usage: setenv name value [-o]");
-	else
+	else if (m == 0)
 	{
 		ft_putstr(str);
 		ft_putendl(" already exist, use -o to overwrite value");
 	}
+	else if (m == 2)
+		ft_putendl("= in name or in value is not supported");
 	return (-1);
 }
 
@@ -63,6 +62,8 @@ int					ft_setenv(int ac, char **av, char **envp)
 	if (ac == 4)
 		if (++o && ft_strcmp(av[3], "-o"))
 			return (usage(1, NULL));
+	if (ft_strchr(av[1], '=') || (av[2] && ft_strchr(av[2], '=')))
+		return (usage(2, NULL));
 	size = ft_strlen(av[1]);
 	while (envp[i])
 	{
