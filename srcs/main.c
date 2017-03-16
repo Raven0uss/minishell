@@ -6,13 +6,11 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 20:36:30 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 22:14:48 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/16 22:26:58 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
-
-// Liberer la memoire proprement en toute circonstances
 
 static void			exec_builtin(char **cmd, unsigned int i, char **envp)
 {
@@ -74,17 +72,22 @@ static int			check_builtins(char **cmd, char **envp)
 static void			minishell(char *buff, char **envp)
 {
 	char			**cmd;
+	int				size;
 
+	size = 0;
 	if (buff[0])
 	{
 		if (!(cmd = ft_whitespaces(buff)))
 			return ;
+		size = ft_sizetab(cmd);
 		if (check_builtins(cmd, envp) == 1)
 		{
 			free(cmd);
 			return ;
 		}
 		exec_cmd(cmd, envp);
+		while (--size)
+			free(cmd[size]);
 		free(cmd);
 	}
 }
