@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 22:23:06 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/17 10:42:16 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,14 @@ static int			cd_oldpwd(char **envp)
 	return (-1);
 }
 
-static int			cd_home(char **envp)
+static int			cd_home(char **envp, unsigned int j)
 {
 	unsigned int	i;
-	unsigned int	j;
 	unsigned int	begin;
 	char			*home;
 
 	i = 0;
 	begin = 5;
-	j = 0;
 	while (envp[i])
 	{
 		if (!(ft_strncmp(envp[i], "HOME=", begin)) && envp[i][begin])
@@ -90,13 +88,13 @@ int					ft_cd(int ac, char **av, char **envp)
 		return (-1);
 	}
 	else if (ac == 1)
-		return (cd_home(envp));
+		return (cd_home(envp, 0));
 	else if (ac == 2)
 	{
 		if (!(ft_strcmp(av[1], "-")))
 			return (cd_oldpwd(envp));
 		if (!ft_strcmp(av[1], "~"))
-			return (cd_home(envp));
+			return (cd_home(envp, 0));
 		if (chdir(av[1]) != 0)
 			return (not_found(av[1], 0));
 	}

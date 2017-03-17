@@ -6,13 +6,13 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:33:50 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 21:45:39 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/17 10:47:16 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-static void			check_env(char *str, int fd, char **envp)
+static int			check_env(char *str, int fd, char **envp)
 {
 	unsigned int	i;
 	unsigned int	size;
@@ -31,10 +31,11 @@ static void			check_env(char *str, int fd, char **envp)
 		{
 			while (envp[i][++size])
 				ft_putchar_fd(envp[i][size], fd);
-			return ;
+			return (0);
 		}
 		i++;
 	}
+	return (0);
 }
 
 static int			print_echo(char *str, int fd, char **envp)
@@ -43,10 +44,7 @@ static int			print_echo(char *str, int fd, char **envp)
 
 	i = 0;
 	if (str[i] && str[i] == '$' && str[i + 1])
-	{
-		check_env(str, fd, envp);
-		return (0);
-	}
+		return (check_env(str, fd, envp));
 	while (str[i])
 	{
 		if (str[i] == '\\' && str[i + 1])
@@ -59,7 +57,7 @@ static int			print_echo(char *str, int fd, char **envp)
 				i++;
 			}
 			else
-				ft_putchar_fd(str[i],fd);
+				ft_putchar_fd(str[i], fd);
 		}
 		else
 			ft_putchar_fd(str[i], fd);

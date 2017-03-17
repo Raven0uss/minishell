@@ -6,13 +6,11 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 22:09:54 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/17 10:40:52 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
-
-// FT_SETENV TROP GRAND
 
 static char			*set_value(char *name, char *value)
 {
@@ -49,21 +47,12 @@ static int			usage(int m, char *str)
 	return (-1);
 }
 
-int					ft_setenv(int ac, char **av, char **envp)
+static int			function(int ac, char **av, char **envp, char o)
 {
-	unsigned char	o;
-	unsigned int	i;
 	unsigned int	size;
+	unsigned int	i;
 
 	i = 0;
-	o = 0;
-	if (ac < 2 || ac > 4)
-		return (usage(1, NULL));
-	if (ac == 4)
-		if (++o && ft_strcmp(av[3], "-o"))
-			return (usage(1, NULL));
-	if (ft_strchr(av[1], '=') || (av[2] && ft_strchr(av[2], '=')))
-		return (usage(2, NULL));
 	size = ft_strlen(av[1]);
 	while (envp[i])
 	{
@@ -85,4 +74,19 @@ int					ft_setenv(int ac, char **av, char **envp)
 		i++;
 	envp[i] = 0;
 	return (0);
+}
+
+int					ft_setenv(int ac, char **av, char **envp)
+{
+	unsigned char	o;
+
+	o = 0;
+	if (ac < 2 || ac > 4)
+		return (usage(1, NULL));
+	if (ac == 4)
+		if (++o && ft_strcmp(av[3], "-o"))
+			return (usage(1, NULL));
+	if (ft_strchr(av[1], '=') || (av[2] && ft_strchr(av[2], '=')))
+		return (usage(2, NULL));
+	return (function(ac, av, envp, (char)o));
 }

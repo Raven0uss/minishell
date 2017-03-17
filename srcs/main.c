@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 20:36:30 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 22:26:58 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/17 10:49:13 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ static void			minishell(char *buff, char **envp)
 		size = ft_sizetab(cmd);
 		if (check_builtins(cmd, envp) == 1)
 		{
+			while (--size)
+				free(cmd[size]);
 			free(cmd);
 			return ;
 		}
