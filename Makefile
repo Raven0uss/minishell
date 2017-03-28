@@ -6,13 +6,14 @@
 #    By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 20:16:27 by sbelazou          #+#    #+#              #
-#    Updated: 2017/03/28 10:45:06 by sbelazou         ###   ########.fr        #
+#    Updated: 2017/03/28 13:34:11 by sbelazou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME		=	minishell
 DIRSRC		=	./srcs/
 DIROBJ		=	./objs/
+BINDIR		=	.
 INC_LIB		=	./includes/libft/libft.a
 SRC			=	main.c exec.c ft_echo.c ft_cd.c ft_env.c\
 				ft_setenv.c ft_unsetenv.c
@@ -36,19 +37,18 @@ CC			=	/usr/bin/gcc
 RM			=	/bin/rm -f
 ECHO		=	echo
 
+all:			$(BINDIR)/$(NAME)
 
-$(NAME)	:		$(OBJ)
-				make -C includes/libft/
-				-@$(CC) $(INC_LIB) $(CFLAGS) -o $(NAME) $(OBJS)
-				@$(ECHO) "\033[32mAll sources are compiled. "
-				@$(ECHO) "$(NAME) has been created.\033[0m"
+$(BINDIR)/$(NAME):	$(OBJ)
+					-@make -C includes/libft/
+					-@$(CC) $(INC_LIB) $(CFLAGS) -o $(NAME) $(OBJS)
+					@$(ECHO) "\033[32mAll sources are compiled. "
+					@$(ECHO) "$(NAME) has been created.\033[0m"
 
 clean	:
 				-@make clean -C includes/libft/
 				@(cd $(DIROBJ) && $(RM) $(OBJ))
 				@$(ECHO) "\033[31mObjects of $(NAME) has been removed.\033[0m"
-
-all		:		$(NAME)
 
 fclean	:		clean
 				-@make fclean -C includes/libft/

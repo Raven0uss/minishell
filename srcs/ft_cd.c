@@ -6,29 +6,34 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/28 12:03:48 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/28 14:38:03 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-static void			replace_var(char **envp, char const *var)
+void				replace_var(char **envp, char const *var)
 {
 	char			*buff;
 	char			**av;
+	unsigned int	i;
 
+	i = 0;
 	buff = NULL;
 	if ((buff = getcwd(buff, sizeof(buff))) == NULL)
 		return ;
 	if ((av = malloc(sizeof(char *) * 4)) == NULL)
 		return ;
-	av[0] = ft_strdup("unsetenv");
-	av[1] = ft_strdup((char *)var);
-	av[2] = NULL;
+	av[i++] = ft_strdup("unsetenv");
+	av[i++] = ft_strdup((char *)var);
+	av[i] = NULL;
 	ft_unsetenv(ft_sizetab(av), av, envp, 0);
-	av[2] = ft_strdup(buff);
-	av[3] = NULL;
+	av[i++] = ft_strdup(buff);
+	av[i] = NULL;
 	ft_setenv(ft_sizetab(av), av, envp);
+	while (--i)
+		free(av[i]);
+	free(av[i]);
 	free(av);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/13 20:36:30 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/28 12:01:21 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/28 14:35:30 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ int					main(int ac, char **av, char **envp)
 	(void)ac;
 	(void)av;
 	ft_putstr("$>");
+	replace_var(envp, "PWD");
 	while (get_next_line(0, &buff) && ft_strcmp(buff, "exit"))
 	{
 		minishell(buff, envp);
