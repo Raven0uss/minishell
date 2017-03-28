@@ -6,7 +6,7 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/16 20:47:34 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/28 12:32:56 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char			**unset_value(char **envp, int i)
 static int			usage(int m, char *str)
 {
 	if (m)
-		ft_putendl("usage: unsetenv name");
+		ft_putendl("usage: unsetenv [VAR ...]");
 	else
 	{
 		ft_putstr(str);
@@ -40,21 +40,30 @@ static int			usage(int m, char *str)
 	return (-1);
 }
 
-int					ft_unsetenv(int ac, char **av, char **envp)
+int					ft_unsetenv(int ac, char **av, char **envp, int mode)
 {
 	int				i;
 	unsigned int	size;
+	unsigned int	j;
+	unsigned char	flag;
 
+	j = 1;
 	i = -1;
 	size = 0;
-	if (ac != 2)
-		return (usage(1, NULL));
-	size = ft_strlen(av[1]);
-	while (envp[++i])
-		if (!ft_strncmp(av[1], envp[i], size - 1) && envp[i][size] == '=')
-		{
-			envp = unset_value(envp, i);
-			return (0);
-		}
-	return (usage(0, av[1]));
+	while (j != (unsigned int)ac)
+	{
+		flag = 0;
+		size = ft_strlen(av[j]);
+		while (envp[++i])
+			if (!ft_strncmp(av[j], envp[i], size - 1) && envp[i][size] == '=')
+			{
+				envp = unset_value(envp, i);
+				flag++;
+			}
+		if (!flag && mode)
+			usage(0, av[j]);
+		j++;
+		i = -1;
+	}
+	return (j == 1 ? usage(1, NULL) : 0);
 }

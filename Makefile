@@ -6,7 +6,7 @@
 #    By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/07 20:16:27 by sbelazou          #+#    #+#              #
-#    Updated: 2017/03/14 19:12:38 by sbelazou         ###   ########.fr        #
+#    Updated: 2017/03/28 10:45:06 by sbelazou         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -19,7 +19,7 @@ SRC			=	main.c exec.c ft_echo.c ft_cd.c ft_env.c\
 
 OBJ			=	$(SRC:.c=.o)
 OBJS		=	$(OBJ:%=$(DIROBJ)%)
-FLAGS		=
+FLAGS		=	yes
 
 ifdef FLAGS
 	ifeq ($(FLAGS), yes)

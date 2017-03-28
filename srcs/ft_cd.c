@@ -6,11 +6,31 @@
 /*   By: sbelazou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/14 15:53:24 by sbelazou          #+#    #+#             */
-/*   Updated: 2017/03/17 10:42:16 by sbelazou         ###   ########.fr       */
+/*   Updated: 2017/03/28 12:03:48 by sbelazou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
+
+static void			replace_var(char **envp, char const *var)
+{
+	char			*buff;
+	char			**av;
+
+	buff = NULL;
+	if ((buff = getcwd(buff, sizeof(buff))) == NULL)
+		return ;
+	if ((av = malloc(sizeof(char *) * 4)) == NULL)
+		return ;
+	av[0] = ft_strdup("unsetenv");
+	av[1] = ft_strdup((char *)var);
+	av[2] = NULL;
+	ft_unsetenv(ft_sizetab(av), av, envp, 0);
+	av[2] = ft_strdup(buff);
+	av[3] = NULL;
+	ft_setenv(ft_sizetab(av), av, envp);
+	free(av);
+}
 
 static int			not_found(char *str, int f)
 {
@@ -21,16 +41,14 @@ static int			not_found(char *str, int f)
 	return (-1);
 }
 
-static int			cd_oldpwd(char **envp)
+static int			cd_oldpwd(char **envp, unsigned int j)
 {
 	int				i;
-	unsigned int	j;
 	unsigned int	begin;
 	char			*oldpwd;
 
 	i = -1;
 	begin = 7;
-	j = 0;
 	while (envp[++i])
 		if (!(ft_strncmp(envp[i], "OLDPWD=", begin)) && envp[i][begin])
 		{
@@ -39,8 +57,10 @@ static int			cd_oldpwd(char **envp)
 			while (envp[i][begin])
 				oldpwd[j++] = envp[i][begin++];
 			oldpwd[j] = 0;
+			replace_var(envp, "OLDPWD");
 			if (chdir(oldpwd) != 0)
 				return (not_found(oldpwd, 1));
+			replace_var(envp, "PWD");
 			ft_putendl(oldpwd);
 			free(oldpwd);
 			return (0);
@@ -49,13 +69,11 @@ static int			cd_oldpwd(char **envp)
 	return (-1);
 }
 
-static int			cd_home(char **envp, unsigned int j)
+static int			cd_home(char **envp, unsigned int j, unsigned int i)
 {
-	unsigned int	i;
 	unsigned int	begin;
 	char			*home;
 
-	i = 0;
 	begin = 5;
 	while (envp[i])
 	{
@@ -66,8 +84,10 @@ static int			cd_home(char **envp, unsigned int j)
 			while (envp[i][begin])
 				home[j++] = envp[i][begin++];
 			home[j] = 0;
+			replace_var(envp, "OLDPWD");
 			if (chdir(home) != 0)
 				return (not_found(home, 1));
+			replace_var(envp, "PWD");
 			free(home);
 			return (0);
 		}
@@ -88,15 +108,17 @@ int					ft_cd(int ac, char **av, char **envp)
 		return (-1);
 	}
 	else if (ac == 1)
-		return (cd_home(envp, 0));
+		return (cd_home(envp, 0, 0));
 	else if (ac == 2)
 	{
 		if (!(ft_strcmp(av[1], "-")))
-			return (cd_oldpwd(envp));
+			return (cd_oldpwd(envp, 0));
 		if (!ft_strcmp(av[1], "~"))
-			return (cd_home(envp, 0));
+			return (cd_home(envp, 0, 0));
+		replace_var(envp, "OLDPWD");
 		if (chdir(av[1]) != 0)
 			return (not_found(av[1], 0));
+		replace_var(envp, "PWD");
 	}
 	return (0);
 }
