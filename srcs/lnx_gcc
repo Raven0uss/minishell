@@ -1,1 +1,2 @@
+make re -C ../includes/libft/
 gcc -g -o minishell_linux *.c ../includes/libft/libft.a
